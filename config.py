@@ -12,7 +12,7 @@ from datetime import datetime as dt
 ____________________ Create The Bot ____________________
 '''
 
-TOKEN_API = '6224316325:AAGpS6BeR3TjUXh0Yrud646yLoUwo4WgIhk'
+TOKEN_API = '6224316325:AAGB-cDYfJe-BIpR-l26u8xpe7n4-9KCYh0'
 USERNAME = '@testtochka_stable_bot'
 
 storage = MemoryStorage() ## FSMachine
