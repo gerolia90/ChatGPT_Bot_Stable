@@ -1,7 +1,7 @@
 import openai
 
 def chatgpt_func(prompt):
-    openai.api_key = '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'
+    openai.api_key = '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'
     completion = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
