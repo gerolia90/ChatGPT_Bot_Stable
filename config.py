@@ -12,7 +12,8 @@ import mysql.connector
 ____________________ Create The Bot ____________________
 '''
 
-TOKEN_API = '5990087979:AAHWTksl2IolPCvrCvfkNH3W2zsJUyR-9t8'
+TOKEN_API = '6224316325:AAGpMIi1y0yziypomDdlNo0UjBsOpNt4Kjo'
+LINK = 'http://t.me/testtochka_stable_bot'
 
 storage = MemoryStorage() ## FSMachine
 bot = Bot(TOKEN_API)
