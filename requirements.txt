@@ -1,3 +1,3 @@
 aiogram
 openai
-mysql.connector
+mysql-connector-python
