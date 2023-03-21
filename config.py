@@ -2,34 +2,119 @@
 ____________________ Import Libs and Values ____________________
 '''
 
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import StatesGroup, State
-import mysql.connector
-
+from datetime import datetime as dt
+# import mysql.connector
 
 '''
 ____________________ Create The Bot ____________________
 '''
 
-TOKEN_API = '6224316325:AAGpMIi1y0yziypomDdlNo0UjBsOpNt4Kjo'
-LINK = 'http://t.me/testtochka_stable_bot'
+TOKEN_API = '6224316325:AAGpS6BeR3TjUXh0Yrud646yLoUwo4WgIhk'
+USERNAME = '@testtochka_stable_bot'
 
 storage = MemoryStorage() ## FSMachine
-bot = Bot(TOKEN_API)
+bot = Bot(token=TOKEN_API)
 dp = Dispatcher(bot, storage=storage)
+admins = ['868207807', 868207807]
 
 class FSM(StatesGroup):
     input_text = State()
-    search_type = State()
     search_object = State()
-
+    issue_object = State()
 
 '''
-____________________ Connect MySQL ____________________
+____________________ DB_TXT ____________________
 '''
 
-## Coming soon
+# def save_data(user_id, username, text, answer):
+#     log = f'\ndate: {dt.now()}\nuser_id: {user_id}\nusername: {username}\ntext: {text}\nanswer: \n{answer}\n'
+    
+#     file_path = 'DB_TXT.txt'
+#     read = open(file_path, 'a')
+#     read.write(f'{log}')
+#     read.close()
+    
+#     file_path_copy = 'DB_TXT_copy.txt'
+#     read_copy = open(file_path_copy, 'a')
+#     read_copy.write(f'{log}')
+#     read_copy.close()
+
+
+#     print('\n____ DB_TXT ____\n'+log)
+#     print('\nData saved successfully in',file_path+'\n________________\n')
+
+# def show_data():
+#     file_path = 'DB_TXT.txt'
+#     read = open(file_path, 'r')
+#     return_info = read.read()
+#     return return_info
+
+# def clear_data():
+#     file_path = 'DB_TXT.txt'
+#     read = open(file_path, 'w')
+#     read.write(f' ')
+#     read.close()
+#     print('The data has been cleared!')
+
+'''
+____________________ MySQL ____________________
+'''
+
+# class MySQL_connection:
+#     def __init__(self):
+
+#         self.db = mysql.connector.connect(
+#             host="containers-us-west-203.railway.app",
+#             user='root',
+#             password='CImnTk1Ii3WMXyIS036C',
+#             database="railway",
+#             port = 7123
+#         )
+#         self.cursor = self.db.cursor()
+
+#         ## Creating table 'ChatGPT' if it doesn't exist
+#         self.cursor.execute("CREATE TABLE IF NOT EXISTS ChatGPT \
+#                     (id INT AUTO_INCREMENT PRIMARY KEY, \
+#                     user_id VARCHAR(255), \
+#                     username VARCHAR(255), \
+#                     text VARCHAR(5100), \
+#                     answer VARCHAR(5100), \
+#                     date_added DATETIME DEFAULT CURRENT_TIMESTAMP \
+#                     ON UPDATE CURRENT_TIMESTAMP)") 
+        
+#         ## Creating table 'ChatGPT_Copy' if it doesn't exist
+#         self.cursor.execute("CREATE TABLE IF NOT EXISTS ChatGPT_Copy \
+#                     (id INT AUTO_INCREMENT PRIMARY KEY, \
+#                     user_id VARCHAR(255), \
+#                     username VARCHAR(255), \
+#                     text VARCHAR(5100), \
+#                     answer VARCHAR(5100), \
+#                     date_added DATETIME DEFAULT CURRENT_TIMESTAMP \
+#                     ON UPDATE CURRENT_TIMESTAMP)") 
+
+#     def add_info(self, user_id, username, text, answer):
+#         self.user_id = user_id
+#         self.username = username
+#         self.text = text
+#         self.answer = answer
+#         sql = 'INSERT INTO ChatGPT\
+#                 (user_id, username, text, answer)\
+#                 VALUES (%s, %s, %s, %s)'
+#         sql_copy = '''INSERT INTO ChatGPT_Copy 
+#         SELECT * FROM ChatGPT 
+#         WHERE NOT EXISTS 
+#         (SELECT * FROM ChatGPT_Copy WHERE ChatGPT_Copy.id = ChatGPT.id)'''
+#         val = (self.user_id, self.username, self.text, self.answer)
+#         self.cursor.execute(sql, val)
+#         self.db.commit()
+#         print('MySQL: Data saved successfully!')
+#         self.cursor.execute(sql_copy)
+#         self.db.commit()
+#         print('MySQL: A copy of the data has been saved successfully!')
+        
 
 '''
 ____________________ Create Text Values ____________________
@@ -63,6 +148,8 @@ The Chat GPT was created by <a href="https://openai.com/">OpenAI</a>.
 An official page — <a href="https://chat.openai.com/">Chat GPT</a>
 
 <b>If you have any problems, write to the developer: @t0_ochka ❤️
+
+You can also use <a href="https://t.me/testtochka_stable_bot">stable version of this bot</a></b>
 '''
 
 ru_desc_text = '''
